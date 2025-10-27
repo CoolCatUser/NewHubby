@@ -1,0 +1,181 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "ByteFlow",
+   Icon = 0,
+   LoadingTitle = "The King of all Rayfields",
+   LoadingSubtitle = "by real_kj88888",
+   ShowText = "ByteFlow",
+   Theme = "Ocean",
+   ToggleUIKeybind = "K",
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "Big Hub"
+   },
+
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+
+   KeySystem = false,
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Hello"}
+   }
+})
+
+local Tab = Window:CreateTab("Scripts", 4483362458)
+local Section = Tab:CreateSection("Byting Section")
+
+local function makeButton(name, url)
+   Tab:CreateButton({
+      Name = name,
+      Callback = function()
+         loadstring(game:HttpGet(url))()
+      end,
+   })
+end
+
+makeButton("Void boss", "https://github.com/CoolCatUser/Voidy/raw/refs/heads/main/VoidBossMaxilito.txt")
+makeButton("Reanimate Jab", "https://rawscripts.net/raw/Just-a-baseplate.-Just-A-Baseplate-Working-Reanimation-39126")
+makeButton("Reanimate Universal", "https://rawscripts.net/raw/Universal-Script-CurrentAngle-V2-Full-axis-reanimate-43351")
+makeButton("Krystal dance theo", "https://rawscripts.net/raw/Universal-Script-Fixed-Kdv3-Modded-by-Theo-51103")
+makeButton("Jab huge giant", "https://rawscripts.net/raw/Just-a-baseplate.-Just-A-Baseplate-Huge-Giant-39127")
+makeButton("Pandora with Reanim", "https://rawscripts.net/raw/Universal-Script-fe-pandora-with-reanim-56878")
+makeButton("Audio Logger", "https://rawscripts.net/raw/Universal-Script-Roblox-Audio-Logger-1522")
+makeButton("Jab Addict", "https://rawscripts.net/raw/The-Strongest-Battlegrounds-Addict-Just-a-baseplate-47115")
+
+
+Tab:CreateButton({
+   Name = "R6 visual",
+   Callback = function()
+      function oof()
+         local Players = game:GetService("Players")
+         local plr = Players.LocalPlayer
+         local char = plr.Character or plr.CharacterAdded:Wait()
+
+         if char:FindFirstChild("Humanoid") and char.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+            local desc = Players:GetHumanoidDescriptionFromUserId(plr.CharacterAppearanceId)
+            local newChar = Players:CreateHumanoidModelFromDescription(desc, Enum.HumanoidRigType.R6)
+            newChar.Name = plr.Name
+
+            if not newChar.PrimaryPart and newChar:FindFirstChild("HumanoidRootPart") then
+               newChar.PrimaryPart = newChar:FindFirstChild("HumanoidRootPart")
+            end
+            if newChar.PrimaryPart and char:FindFirstChild("HumanoidRootPart") then
+               newChar:SetPrimaryPartCFrame(char.PrimaryPart.CFrame)
+            end
+
+            char:Destroy()
+            newChar.Parent = workspace
+            plr.Character = newChar
+
+            local cam = workspace.CurrentCamera
+            cam.CameraSubject = newChar:WaitForChild("Humanoid")
+            cam.CameraType = Enum.CameraType.Custom
+         end
+
+         local c = workspace:WaitForChild(plr.Name)
+         local Humanoid = c:WaitForChild("Humanoid")
+         local pose = "Standing"
+         local currentAnimTrack = nil
+
+         local anims = {
+            idle = "http://www.roblox.com/asset/?id=180435571",
+            walk = "http://www.roblox.com/asset/?id=180426354",
+            jump = "http://www.roblox.com/asset/?id=125750702",
+            fall = "http://www.roblox.com/asset/?id=180436148"
+         }
+
+         local function playAnim(animId, speed)
+            if currentAnimTrack then
+               currentAnimTrack:Stop()
+               currentAnimTrack:Destroy()
+            end
+            local anim = Instance.new("Animation")
+            anim.AnimationId = animId
+            currentAnimTrack = Humanoid:LoadAnimation(anim)
+            currentAnimTrack.Priority = Enum.AnimationPriority.Core
+            currentAnimTrack:Play(0.1)
+            currentAnimTrack:AdjustSpeed(speed or 1.0)
+         end
+
+         Humanoid.Running:Connect(function(speed)
+            if speed > 0.01 then
+               playAnim(anims.walk, speed / Humanoid.WalkSpeed)
+               pose = "Running"
+            else
+               playAnim(anims.idle)
+               pose = "Standing"
+            end
+         end)
+
+         Humanoid.Jumping:Connect(function()
+            playAnim(anims.jump)
+            pose = "Jumping"
+         end)
+
+         Humanoid.FreeFalling:Connect(function()
+            if pose ~= "Jumping" then
+               playAnim(anims.fall)
+               pose = "FreeFall"
+            end
+         end)
+
+         Humanoid.Died:Connect(function()
+            pose = "Dead"
+         end)
+
+         playAnim(anims.idle)
+         pose = "Standing"
+      end
+
+      oof()
+
+      local UIS = game:GetService("UserInputService")
+      local plr = game.Players.LocalPlayer
+      local deathPos = nil
+
+      plr.CharacterAdded:Connect(function(char)
+         local hrp = char:WaitForChild("HumanoidRootPart")
+         if deathPos then
+            hrp.CFrame = deathPos
+         end
+      end)
+
+      task.spawn(function()
+         while task.wait(0.1) do
+            local char = plr.Character
+            if char and char:FindFirstChild("Humanoid") then
+               if char.Humanoid.Health <= 0 then
+                  local hrp = char:FindFirstChild("HumanoidRootPart")
+                  if hrp then
+                     deathPos = hrp.CFrame
+                  end
+               end
+            end
+         end
+      end)
+
+      UIS.InputBegan:Connect(function(input)
+         if input.KeyCode == Enum.KeyCode.Insert and deathPos then
+            local char = plr.Character
+            if char and char:FindFirstChild("HumanoidRootPart") then
+               char.HumanoidRootPart.CFrame = deathPos
+            end
+         end
+      end)
+   end,
+})
