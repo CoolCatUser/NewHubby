@@ -1,0 +1,83 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "ByteFlow",
+   Icon = 0,
+   LoadingTitle = "The King of all Rayfields",
+   LoadingSubtitle = "by real_kj88888",
+   ShowText = "ByteFlow",
+   Theme = "Ocean",
+   ToggleUIKeybind = "K",
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "Big Hub"
+   },
+
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+
+   KeySystem = false,
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Hello"}
+   }
+})
+
+
+local function makeButton(tab, name, url)
+   tab:CreateButton({
+      Name = name,
+      Callback = function()
+         loadstring(game:HttpGet(url))()
+      end,
+   })
+end
+
+
+
+local ScriptsTab = Window:CreateTab("Scripts", 4483362458)
+ScriptsTab:CreateSection("Byting Section")
+
+makeButton(ScriptsTab, "Void boss", "https://github.com/CoolCatUser/Voidy/raw/refs/heads/main/VoidBossMaxilito.txt")
+makeButton(ScriptsTab, "Reanimate Jab", "https://rawscripts.net/raw/Just-a-baseplate.-Just-A-Baseplate-Working-Reanimation-39126")
+makeButton(ScriptsTab, "Reanimate Universal", "https://rawscripts.net/raw/Universal-Script-CurrentAngle-V2-Full-axis-reanimate-43351")
+makeButton(ScriptsTab, "Krystal dance theo", "https://rawscripts.net/raw/Universal-Script-Fixed-Kdv3-Modded-by-Theo-51103")
+makeButton(ScriptsTab, "Jab huge giant", "https://rawscripts.net/raw/Just-a-baseplate.-Just-A-Baseplate-Huge-Giant-39127")
+makeButton(ScriptsTab, "Pandora with Reanim", "https://rawscripts.net/raw/Universal-Script-fe-pandora-with-reanim-56878")
+makeButton(ScriptsTab, "Audio Logger", "https://rawscripts.net/raw/Universal-Script-Roblox-Audio-Logger-1522")
+makeButton(ScriptsTab, "Jab Addict", "https://rawscripts.net/raw/The-Strongest-Battlegrounds-Addict-Just-a-baseplate-47115")
+makeButton(ScriptsTab, "C00lkidd", "https://github.com/CoolCatUser/RedKiddz/raw/refs/heads/main/C00lkidd%20(BETA)")
+makeButton(ScriptsTab, "Pursuer", "https://raw.githubusercontent.com/skidmaster69-1/scripts/main/pursuer")
+makeButton(ScriptsTab, "Hacklord", "https://github.com/CoolCatUser/HacklordRepo/raw/refs/heads/main/MainHacklord.lua")
+makeButton(ScriptsTab, "romeo free", "https://github.com/CoolCatUser/Admin-Noli/raw/refs/heads/main/Admin_Noli_Free_Rig")
+makeButton(ScriptsTab, "romeo paid", "https://github.com/CoolCatUser/Admin-Noli/raw/refs/heads/main/admin_noli_Paid_Rig.txt")
+
+
+
+local ForsakenTab = Window:CreateTab("Forsaken", 4483362458)
+ForsakenTab:CreateSection("Forbyting Section")
+
+makeButton(ForsakenTab, "Guesting Hub", "https://raw.githubusercontent.com/LolnotaKid/project/refs/heads/main/AutoBLOCKKKWAHV1")
+makeButton(ForsakenTab, "Fartsaken Key Syruppy", "https://raw.githubusercontent.com/ivannetta/ShitScripts/main/forsaken.lua")
+
+
+
+local HoursTab = Window:CreateTab("24-Hours", 4483362458)
+HoursTab:CreateSection("24-Hoby Section")
+
+makeButton(HoursTab, "Dubstep", "https://raw.githubusercontent.com/BloxinStud10/24-Hours/refs/heads/main/Loadstrings/DubstepGun.txt")
+makeButton(HoursTab, "Star Glitcher V1", "https://raw.githubusercontent.com/BloxinStud10/24-Hours/refs/heads/main/Loadstrings/StarGlitcher.txt")
+makeButton(HoursTab, "Hacklord", "https://raw.githubusercontent.com/BloxinStud10/24-Hours/refs/heads/main/Loadstrings/Hacklord.txt")
